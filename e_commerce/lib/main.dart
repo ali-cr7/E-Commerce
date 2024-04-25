@@ -1,10 +1,14 @@
 import 'dart:io';
 
+import 'package:e_commerce/core/app/env.variables.dart';
 import 'package:e_commerce/e_commerce.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() async {
+  await EnvVariable.instance.init(envType: EnvTypeEnum.prod);
+
   WidgetsFlutterBinding.ensureInitialized();
   Platform.isAndroid
       ? await Firebase.initializeApp(
@@ -15,6 +19,11 @@ void main() async {
           projectId: 'e-commerce-715c0',
         ))
       : await Firebase.initializeApp();
+  await SystemChrome.setPreferredOrientations(
+    [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp],
+  ).then((_) {
+    runApp(const ECommerce());
+  });
 
-  runApp(const ECommerce());
+
 }
