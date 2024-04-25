@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/app/env.variables.dart';
 import 'package:flutter/material.dart';
 
 class ECommerce extends StatelessWidget {
@@ -7,7 +8,7 @@ class ECommerce extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: EnvVariable.instance.depugMode,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
