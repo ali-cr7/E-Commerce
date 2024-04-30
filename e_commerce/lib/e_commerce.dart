@@ -1,6 +1,7 @@
 import 'package:e_commerce/core/app/connectivity_conroller.dart';
 import 'package:e_commerce/core/app/env.variables.dart';
 import 'package:e_commerce/core/common/screens/no_network_screem.dart';
+import 'package:e_commerce/core/routes/app_routes.dart';
 import 'package:e_commerce/core/style/fonts/font_family_helper.dart';
 import 'package:e_commerce/core/style/fonts/font_widget_helper.dart';
 import 'package:flutter/material.dart';
@@ -77,7 +78,10 @@ class ECommerce extends StatelessWidget {
                 ),
               ),
             ),
+               onGenerateRoute: AppRoutes.onGenerateRoute,
+              initialRoute: AppRoutes.testOne,
           );
+          
         } else {
           return MaterialApp(
             debugShowCheckedModeBanner: EnvVariable.instance.depugMode,
